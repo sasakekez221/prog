@@ -34,6 +34,7 @@
             <label>Vrsta djela:</label>
             <select name="vrsta_djela" required>
                 <option value="roman" <?php echo ($row['vrsta_djela'] == 'roman' ? 'selected' : ''); ?>>Roman</option>
+                <option value="pripovjetka" <?php echo ($row['vrsta_djela'] == 'pripovjetka' ? 'selected' : ''); ?>>Pripovjetka</option>
                 <option value="drama" <?php echo ($row['vrsta_djela'] == 'drama' ? 'selected' : ''); ?>>Drama</option>
                 <option value="poezija" <?php echo ($row['vrsta_djela'] == 'poezija' ? 'selected' : ''); ?>>Poezija</option>
                 <option value="novela" <?php echo ($row['vrsta_djela'] == 'novela' ? 'selected' : ''); ?>>Novela</option>

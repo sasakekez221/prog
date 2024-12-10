@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         jezicno_stilska_analiza = '$jezicno_stilska_analiza', 
         povijesni_kontekst = '$povijesni_kontekst', 
         osobni_osvrt = " . ($osobni_osvrt ? "'$osobni_osvrt'" : "NULL") . "
-        WHERE ID = $id";
+        WHERE ID = $id";  
     
     // Execute the query
     if ($connection->query($query) === TRUE) {

@@ -25,7 +25,7 @@
             <select name="vrsta_djela" required>
                 <option value="">Odaberi vrstu</option>
                 <option value="roman">Roman</option>
-                <option value="roman">Pripovjetka</option>
+                <option value="pripovjetka">Pripovjetka</option>
                 <option value="drama">Drama</option>
                 <option value="poezija">Poezija</option>
                 <option value="novela">Novela</option>

@@ -5,7 +5,6 @@
     <title>Knjižnica lektirnih djela</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Additional CSS to handle wide table */
         .table-container {
             overflow-x: auto;
         }
@@ -44,12 +43,6 @@
                         <th>Glavni likovi</th>
                         <th>Citati</th>
                         <th>Kompozicija djela</th>
-                        <th>Književna vrsta</th>
-                        <th>Književno razdoblje</th>
-                        <th>Stilska sredstva</th>
-                        <th>Jezično-stilska analiza</th>
-                        <th>Povijesni kontekst</th>
-                        <th>Osobni osvrt</th>
                         <th>Akcije</th>
                     </tr>
                 </thead>
@@ -57,7 +50,6 @@
                     <?php
                     require 'povezivanje.php';
                     
-                    // Build query with optional search and filter
                     $query = "SELECT * FROM tablica WHERE 1=1";
                     $params = [];
                     $types = '';
@@ -76,7 +68,6 @@
                         $types .= 's';
                     }
 
-                    // Prepare and execute query
                     $stmt = $connection->prepare($query);
                     if (!empty($params)) {
                         $stmt->bind_param($types, ...$params);
@@ -105,26 +96,11 @@
                         echo "<td>" . (strlen($row['kompozicija_djela']) > 50 ? 
                             htmlspecialchars(substr($row['kompozicija_djela'], 0, 50) . '...') : 
                             htmlspecialchars($row['kompozicija_djela'])) . "</td>";
-                        echo "<td>" . htmlspecialchars($row['knjizevna_vrsta']) . "</td>";
-                        echo "<td>" . htmlspecialchars($row['knjizevno_razdoblje']) . "</td>";
-                        echo "<td>" . (strlen($row['stilska_sredstva']) > 50 ? 
-                            htmlspecialchars(substr($row['stilska_sredstva'], 0, 50) . '...') : 
-                            htmlspecialchars($row['stilska_sredstva'])) . "</td>";
-                        echo "<td>" . (strlen($row['jezicno_stilska_analiza']) > 50 ? 
-                            htmlspecialchars(substr($row['jezicno_stilska_analiza'], 0, 50) . '...') : 
-                            htmlspecialchars($row['jezicno_stilska_analiza'])) . "</td>";
-                        echo "<td>" . (strlen($row['povijesni_kontekst']) > 50 ? 
-                            htmlspecialchars(substr($row['povijesni_kontekst'], 0, 50) . '...') : 
-                            htmlspecialchars($row['povijesni_kontekst'])) . "</td>";
-                        echo "<td>" . (!empty($row['osobni_osvrt']) ? 
-                            (strlen($row['osobni_osvrt']) > 50 ? 
-                            htmlspecialchars(substr($row['osobni_osvrt'], 0, 50) . '...') : 
-                            htmlspecialchars($row['osobni_osvrt'])) : 'N/A') . "</td>";
-                        echo "<td>";
-                        echo "<a href='uredi.php?id=" . $row['ID'] . "' class='btn'>Uredi</a> ";
-                        echo "<a href='obrisi.php?id=" . $row['ID'] . "' class='btn delete' onclick='return confirm(\"Jeste li sigurni?\")'>Obriši</a>";
-                        echo "</td>";
-                        echo "</tr>";
+                        echo '<td>';
+                        echo '<a href="uredi.php?id=' . $row['ID'] . '" class="btn">Uredi</a> ';
+                        echo '<a href="obrisi.php?id=' . $row['ID'] . '" class="btn delete" onclick="return confirm(\'Jeste li sigurni?\')">Obriši</a>';
+                        echo '</td>';
+                        echo '</tr>';
                     }
                     ?>
                 </tbody>
